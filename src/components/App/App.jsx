@@ -7,7 +7,7 @@ import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 
 function App() {
 
-  const [galleryItems, setGalleryItems] = useState({});
+  const [galleryItems, setGalleryItems] = useState([]);
 
   const getGallery = () => {
     //GET items from module
@@ -31,7 +31,7 @@ function App() {
         </header>
         <p>Gallery goes here</p>
         {/* <img src="images/goat_small.jpg"/> */}
-        <img src="images/bike.png" />
+        {/* <img src="images/bike.png" /> */}
         <GalleryList 
           galleryItems={galleryItems}
         />

@@ -1,4 +1,4 @@
-
+import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 
 
 function GalleryList({ galleryItems }) {
@@ -10,9 +10,7 @@ function GalleryList({ galleryItems }) {
                 galleryItems.map((item) => (
                     <GalleryItem 
                         key={item.id}
-                        path={item.path}
-                        desc={item.description}
-                        likes={item.likes}
+                        item={item}
                     />
                 ))
             }
