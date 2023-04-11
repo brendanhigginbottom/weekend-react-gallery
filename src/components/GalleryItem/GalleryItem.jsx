@@ -1,10 +1,18 @@
-
+import { useState } from 'react';
 
 function GalleryItem({ item }) {
 
+    const [galleryView, setGalleryView] = useState('a');
+
+    const test = () => {
+        return (
+            <div>Test</div>
+        )
+    }
+
     return (
         <div>
-            <img src={item.path}></img>
+           {test()}
         </div>
     );
 }
