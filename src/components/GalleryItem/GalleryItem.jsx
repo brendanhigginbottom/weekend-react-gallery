@@ -1,32 +1,56 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './GalleryItem.css';
+import axios from 'axios';
 
-function GalleryItem({ item }) {
 
-    const [galleryView, setGalleryView] = useState('img');
+function GalleryItem({ item, getGallery }) {
+    //used state to toggle between photo and desc
+    const [itemView, setGalleryView] = useState('img');
 
+   const useEffect = (() => {
+        getGallery();
+    }, []);
+
+    //checks the value of state
     const swapDisplay = (event) => {
         console.log('In swapDisplay');
-        galleryView === 'img' ? setGalleryView('desc') : setGalleryView('img');
+        itemView === 'img' ? setGalleryView('desc') : setGalleryView('img');
     }
 
-    const display = () => {
-        if (galleryView === 'img') {
+    //renders based on state
+    const displayItem = () => {
+        if (itemView === 'img') {
             return (
                 <img onClick={swapDisplay} src={item.path}></img>
             );
-        } else if (galleryView === 'desc') {
+        } else if (itemView === 'desc') {
             return (
-                <div className="galleryDiv" onClick={swapDisplay}>
+                <div 
+                onClick={swapDisplay}>
                     {item.description}
                 </div>
             );
         }
     }
 
+    //PUT to add like
+    const addLike = (event) => {
+        axios.put(`/gallery/like/:${item.id}`).then((response) => {
+            console.log('in addLike');
+            getGallery();
+        }).catch((error) => {
+            console.log(`Error in PUT ${error}`);
+            alert('Something went wrong.');
+        });
+    }
+
     return (
         <div>
-           {display()}
+           {displayItem()}
+           <br />
+           <div>
+            Likes: {item.likes} <button onClick={addLike}>Like</button>
+           </div>
         </div>
     );
 }
