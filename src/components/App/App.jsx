@@ -13,7 +13,7 @@ function App() {
     //GET items from module
     axios.get('/gallery').then((response) => {
       setGalleryItems(response.data);
-      console.log(galleryItems);
+      // console.log(galleryItems);
     }).catch((error) => {
       console.log(`Error in GET ${error}`);
       alert('Something went wrong.');
