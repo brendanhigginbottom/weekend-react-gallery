@@ -7,9 +7,9 @@ function GalleryItem({ item, getGallery }) {
     //used state to toggle between photo and desc
     const [itemView, setGalleryView] = useState('img');
 
-   const useEffect = (() => {
-        getGallery();
-    }, []);
+    // useEffect(() => {
+    //     getGallery();
+    //   }, []);
 
     //checks the value of state
     const swapDisplay = (event) => {
@@ -34,7 +34,7 @@ function GalleryItem({ item, getGallery }) {
     }
 
     //PUT to add like
-    const addLike = (event) => {
+    const addLike = (e) => {
         axios.put(`/gallery/like/:${item.id}`).then((response) => {
             console.log('in addLike');
             getGallery();
@@ -49,7 +49,7 @@ function GalleryItem({ item, getGallery }) {
            {displayItem()}
            <br />
            <div>
-            Likes: {item.likes} <button onClick={addLike}>Like</button>
+            Likes: {item.likes} <button onClick={((e) => addLike(e))}>Like</button>
            </div>
         </div>
     );
