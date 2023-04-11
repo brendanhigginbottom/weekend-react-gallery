@@ -5,7 +5,7 @@ function GalleryList({ galleryItems, getGallery }) {
 
     return (
 
-        <>
+        <div>
             {
                 galleryItems.map((item) => (
                     <GalleryItem 
@@ -15,7 +15,7 @@ function GalleryList({ galleryItems, getGallery }) {
                     />
                 ))
             }
-        </>
+        </div>
     );
 }
 

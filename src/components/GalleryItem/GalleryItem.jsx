@@ -41,7 +41,13 @@ function GalleryItem({ item, getGallery }) {
     }
 
     return (
-        <div>
+        <div
+        style={{
+            display: 'flex', 
+            justifyContent: 'space-around',
+            flexDirection: 'column',
+        }}
+        >
            {displayItem()}
            <br />
            <div>
