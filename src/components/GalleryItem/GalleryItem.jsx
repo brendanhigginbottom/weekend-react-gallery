@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './GalleryItem.css';
 
 function GalleryItem({ item }) {
 
@@ -6,7 +7,7 @@ function GalleryItem({ item }) {
 
     const swapDisplay = (event) => {
         console.log('In swapDisplay');
-        setGalleryView('desc')
+        galleryView === 'img' ? setGalleryView('desc') : setGalleryView('img');
     }
 
     const display = () => {
@@ -16,7 +17,7 @@ function GalleryItem({ item }) {
             );
         } else if (galleryView === 'desc') {
             return (
-                <div>
+                <div className="galleryDiv" onClick={swapDisplay}>
                     {item.description}
                 </div>
             );
